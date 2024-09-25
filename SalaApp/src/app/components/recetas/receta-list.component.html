@@ -1,0 +1,26 @@
+<div class="container mt-5">
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+
+  <div class="d-flex justify-content-start mb-3">
+    <a class="btn btn-primary" routerLink="/registerReceta">Registrar Nueva Receta</a>
+  </div>
+
+
+  <ul *ngIf="recetas.length" class="list-group">
+    <li *ngFor="let receta of recetas" class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <strong>Receta:</strong> {{ receta.nombre }} - <strong>Creada por:</strong> {{ receta.usuario.email }}
+      </div>
+      <div>
+        <a class="btn btn-info btn-sm me-1" routerLink="/receta/{{ receta.id }}">Ver Detalles</a>
+        <a class="btn btn-info btn-sm me-1" routerLink="/edit-receta/{{ receta.id }}">Editar</a>
+        <a class="btn btn-danger btn-sm" routerLink="/delete-receta/{{ receta.id }}">Eliminar</a>
+      </div>
+    </li>
+  </ul>
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+</div>

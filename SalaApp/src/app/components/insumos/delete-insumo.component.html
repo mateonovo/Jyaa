@@ -1,0 +1,19 @@
+<div class="container mt-5">
+  <div *ngIf="insumo" class="card">
+    <div class="card-header">
+      <h2 class="card-title">Eliminar Insumo</h2>
+    </div>
+    <div class="card-body">
+      <p class="card-text">¿Estás seguro de que deseas eliminar al insumo: {{ insumo.nombre }}?</p>
+      <button (click)="deleteInsumo()" class="btn btn-danger">Eliminar</button>
+    </div>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    <p>{{ successMessage }}</p>
+  </div>
+</div>

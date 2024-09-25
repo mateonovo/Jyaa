@@ -1,0 +1,41 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Lista de materias primas</h2>
+    <a class="btn btn-primary mb-2" routerLink="/create-materia">Registrar Nueva Materia Prima</a>
+    <div *ngIf="materias.length > 0; else noCanales">
+        <div class="table-responsive shadow-sm">
+
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Productor</th>
+                        <th>Cantidad en kgs</th>
+                        <th>Costo por kg</th>
+                        <th>Compra</th>
+                        <th>Vencimiento</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let materiaPrima of materias">
+                        <td>{{ materiaPrima.nombre }}</td>
+                        <td>{{ materiaPrima.productor.nombre}}</td>
+                        <td>{{ materiaPrima.peso }}</td>
+                        <td>{{ materiaPrima.costoPorKg}}</td>
+                        <td>{{ materiaPrima.fechaCompra | date }}</td>
+                        <td>{{ materiaPrima.fechaVencimiento | date }}</td>
+                        <td>
+                        <a class="btn btn-danger btn-sm" routerLink="/delete-materia/{{ materiaPrima.id }}">Eliminar</a>
+                        <a class="btn btn-warning btn-sm me-1" routerLink="/edit-materia/{{ materiaPrima.id }}">Editar</a>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <ng-template #noCanales>
+        <div class="alert alert-info text-center" role="alert">
+            No se encontraron materias primas disponibles.
+        </div>
+    </ng-template>    
+</div>

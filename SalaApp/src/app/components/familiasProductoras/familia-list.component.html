@@ -1,0 +1,25 @@
+<div class="container mt-3">
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <a class="btn btn-primary mb-2" routerLink="/registerFamilia">Registrar Nueva Familia Productora</a>
+
+  
+  <ul *ngIf="familias.length" class="list-group">
+    <li *ngFor="let familia of familias" class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <strong>Familia Productora:</strong> {{ familia.nombre }} - <strong>Zona:</strong> {{ familia.zona }} - <strong>Fecha de inicio:</strong> {{ familia.fechaInicio | date }}
+      </div>
+      <div>
+        <a class="btn btn-info btn-sm me-1" routerLink="/edit-familia/{{ familia.id }}">Editar</a>
+        <a class="btn btn-danger btn-sm" routerLink="/delete-familia/{{ familia.id }}">Eliminar</a>
+      </div>
+    </li>
+  </ul>
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+
+  
+</div>

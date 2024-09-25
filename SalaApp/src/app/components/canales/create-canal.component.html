@@ -1,0 +1,26 @@
+<div class="container mt-3">
+    <h2>Crear Canal</h2>
+    <form (ngSubmit)="createCanal(createForm)" #createForm="ngForm" class="card">
+      <div class="card-body">
+        <div class="mb-3">
+                   
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" id="nombre" [(ngModel)]="canal.nombre" name="nombre" required class="form-control">
+          </div>
+          <label for="ubicacion" class="form-label">ubicacion:</label>
+          <input type="ubicacion" id="ubicacion" [(ngModel)]="canal.ubicacion" name="ubicacion" required class="form-control" >
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      </div>
+    </form>
+  
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+      <p>{{ errorMessage }}</p>
+    </div>
+  
+    <div *ngIf="successMessage" class="alert alert-success mt-3">
+      <p>{{ successMessage }}</p>
+    </div>
+  </div>
+  

@@ -1,0 +1,23 @@
+<div class="btn-group" role="group" aria-label="Filtro de lotes">
+  <button class="btn btn-outline-primary" [ngClass]="{'active': filterOption === 'active'}" (click)="toggleFilter('active')">Mostrar Activos</button>
+  <button class="btn btn-outline-primary" [ngClass]="{'active': filterOption === 'inactive'}" (click)="toggleFilter('inactive')">Mostrar No Activos</button>
+  <button class="btn btn-outline-primary" [ngClass]="{'active': filterOption === 'all'}"  (click)="toggleFilter('all')">Mostrar Todos</button>
+</div>
+
+<div class="container mt-3">
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <a class="btn btn-primary mb-2" routerLink="/agregarLote">Registrar Nuevo Lote</a>
+  <ul *ngIf="filteredLotes.length" class="list-group">
+    <li *ngFor="let lote of filteredLotes" class="list-group-item d-flex justify-content-between align-items-center">
+      {{ lote.codigo }} - {{ lote.nombre }}
+      <a class="btn btn-info btn-sm" routerLink="/lote/{{ lote.id }}">Ver Lote</a>
+    </li>
+  </ul>
+  <div *ngIf="!filteredLotes.length && !errorMessage" class="alert alert-warning mt-3">
+    No se encontraron lotes.
+  </div>
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+</div>
+  

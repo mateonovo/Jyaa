@@ -1,0 +1,36 @@
+<div class="container mt-3">
+  <h2>Registrar Usuario</h2>
+  <form (ngSubmit)="register(registerForm)" #registerForm="ngForm" class="card">
+    <div class="card-body">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" id="email" [(ngModel)]="user.email" name="email" ngModel email required class="form-control">
+      </div>
+      
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre:</label>
+        <input type="text" id="nombre" [(ngModel)]="user.nombre" name="nombre" required class="form-control">
+      </div>
+      
+      <div class="mb-3">
+        <label for="apellido" class="form-label">Apellido:</label>
+        <input type="text" id="apellido" [(ngModel)]="user.apellido" name="apellido" required class="form-control">
+      </div>
+      
+      <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" id="password" [(ngModel)]="user.password" name="password" required class="form-control">
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Registrar</button>
+    </div>
+  </form>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    <p>{{ successMessage }}</p>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<!-- register-lote.component.html -->
+
+<div class="container mt-5">
+  <h2 class="mb-4">Registrar Lote</h2>
+  <form (ngSubmit)="register(registerForm)" #registerForm="ngForm">
+
+    <div class="form-group">
+      <label for="codigo">Código:</label>
+      <input type="text" class="form-control" id="codigo" [(ngModel)]="lote.codigo" name="codigo" required>
+    </div>
+
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input type="text" class="form-control" id="nombre" [(ngModel)]="lote.nombre" name="nombre" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="fechaElaboracion">Fecha de Elaboración:</label>
+      <input type="date" class="form-control" id="fechaElaboracion" [(ngModel)]="lote.fechaElaboracion" name="fechaElaboracion" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="cantidadProducida">Cantidad Producida (en KGs):</label>
+      <input type="number" class="form-control" id="cantidadProducida" [(ngModel)]="lote.cantidadProducida" name="cantidadProducida" required>
+    </div>
+
+    <div formArrayName="itemsDeMateriaPrima">
+      <div *ngFor="let item of lote.itemsDeMateriaPrima; let i = index" class="form-group">
+        <label for="materiaPrimaId">Materia Prima:</label>
+        <select class="form-control" [(ngModel)]="item.materiaPrimaId" name="materiaPrimaId-{{i}}" required>
+          <option *ngFor="let mp of materiasPrimas" [value]="mp.id">{{ mp.nombre }}</option>
+        </select>
+        <label for="cantidadEnKg">Cantidad en Kg:</label>
+        <input type="number" class="form-control" [(ngModel)]="item.cantidadEnKg" name="cantidadEnKg-{{i}}" required>
+        <button type="button" class="btn btn-danger mt-2" (click)="eliminarItemDeMateriaPrima(i)">Eliminar</button>
+      </div>
+      <button type="button" class="btn btn-secondary mt-2" (click)="agregarItemDeMateriaPrima()">Agregar Materia Prima</button>
+    </div>
+    
+    <button type="submit" class="btn btn-primary mt-3">Registrar</button>
+  </form>
+  
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    <p>{{ errorMessage }}</p>
+  </div>
+  
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    <p>{{ successMessage }}</p>
+  </div>
+</div>

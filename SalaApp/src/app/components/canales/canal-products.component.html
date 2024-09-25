@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <h2>Lista de Productos</h2>
+  
+    <div *ngIf="productos.length > 0; else noProducts">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of productos">
+              <td>{{ producto.nombre }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+    <ng-template #noProducts>
+      <div class="alert alert-info" role="alert">
+        No hay productos disponibles.
+      </div>
+    </ng-template>
+  </div>
+  

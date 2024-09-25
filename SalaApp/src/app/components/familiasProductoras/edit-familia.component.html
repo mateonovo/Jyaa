@@ -1,0 +1,30 @@
+<div class="container mt-5">
+  <h2>Editar Familia Productora</h2>
+  <form (ngSubmit)="saveFamilia(editForm)" #editForm="ngForm">
+
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input type="text" class="form-control" id="nombre" [(ngModel)]="familia.nombre" name="nombre" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="fechaInicio">Fecha de inicio:</label>
+      <input type="date" class="form-control" id="fechaInicio" [(ngModel)]="familia.fechaInicio" name="fechaInicio" required>
+    </div>
+
+    <div class="form-group">
+      <label for="zona">Zona:</label>
+      <input type="text" class="form-control" id="zona" [(ngModel)]="familia.zona" name="zona">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+  </form>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    <p>{{ successMessage }}</p>
+  </div>
+</div>

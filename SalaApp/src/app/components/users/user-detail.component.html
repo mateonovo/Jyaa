@@ -1,0 +1,14 @@
+<div class="container mt-3">
+  <div *ngIf="user" class="card">
+    <h2 class="card-header">Detalles del Usuario</h2>
+    <div class="card-body">
+      <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+      <p class="card-text"><strong>Nombre:</strong> {{ user.nombre }}</p>
+      <p class="card-text"><strong>Apellido:</strong> {{ user.apellido }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+</div>

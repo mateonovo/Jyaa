@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  
+  <display-name>Sala</display-name>
+
+  <servlet>
+    <description></description>
+    <display-name>PermisoServlet</display-name>
+    <servlet-name>PermisoServlet</servlet-name>
+    <servlet-class>servlets.PermisoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PermisoServlet</servlet-name>
+    <url-pattern>/PermisoServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>OpenApi</servlet-name>
+    <servlet-class>io.swagger.v3.jaxrs2.integration.OpenApiServlet</servlet-class>
+    <init-param>
+      <param-name>openApi.configuration.resourcePackages</param-name>
+      <param-value>api</param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>OpenApi</servlet-name>
+    <url-pattern>/openapi/*</url-pattern>
+  </servlet-mapping>
+
+  <filter>
+    <filter-name>ApiOriginFilter</filter-name>
+    <filter-class>ar.com.java.applicaciones.filter.ServletFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>ApiOriginFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <display-name>ServletFilter</display-name>
+    <filter-name>ServletFilter</filter-name>
+    <filter-class>ar.com.java.applicaciones.filter.ServletFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>ServletFilter</filter-name>
+    <url-pattern>/ServletFilter</url-pattern>
+  </filter-mapping>
+  
+  <!-- welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+
+  <servlet>
+    <description></description>
+    <display-name>InsumoServlet</display-name>
+    <servlet-name>InsumoServlet</servlet-name>
+    <servlet-class>servlets.InsumoServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>InsumoServlet</servlet-name>
+    <url-pattern>/InsumoServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>CanalDeVentaServlet</display-name>
+    <servlet-name>CanalDeVentaServlet</servlet-name>
+    <servlet-class>servlets.CanalDeVentaServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>CanalDeVentaServlet</servlet-name>
+    <url-pattern>/CanalDeVentaServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>MateriaPrimaServlet</display-name>
+    <servlet-name>MateriaPrimaServlet</servlet-name>
+    <servlet-class>servlets.MateriaPrimaServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>MateriaPrimaServlet</servlet-name>
+    <url-pattern>/MateriaPrimaServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>RecetaServlet</display-name>
+    <servlet-name>RecetaServlet</servlet-name>
+    <servlet-class>servlets.RecetaServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>RecetaServlet</servlet-name>
+    <url-pattern>/RecetaServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>UsuarioServlet</display-name>
+    <servlet-name>UsuarioServlet</servlet-name>
+    <servlet-class>servlets.UsuarioServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>UsuarioServlet</servlet-name>
+    <url-pattern>/UsuarioServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>ItemDeInsumoServlet</display-name>
+    <servlet-name>ItemDeInsumoServlet</servlet-name>
+    <servlet-class>servlets.ItemDeInsumoServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ItemDeInsumoServlet</servlet-name>
+    <url-pattern>/ItemDeInsumoServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>StockProductoTerminadoServlet</display-name>
+    <servlet-name>StockProductoTerminadoServlet</servlet-name>
+    <servlet-class>servlets.StockProductoTerminadoServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>StockProductoTerminadoServlet</servlet-name>
+    <url-pattern>/StockProductoTerminadoServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>LoteServlet</display-name>
+    <servlet-name>LoteServlet</servlet-name>
+    <servlet-class>servlets.LoteServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>LoteServlet</servlet-name>
+    <url-pattern>/LoteServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>ItemDeMateriaPrimaServlet</display-name>
+    <servlet-name>ItemDeMateriaPrimaServlet</servlet-name>
+    <servlet-class>servlets.ItemDeMateriaPrimaServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ItemDeMateriaPrimaServlet</servlet-name>
+    <url-pattern>/ItemDeMateriaPrimaServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>FamiliaProductoraServlet</display-name>
+    <servlet-name>FamiliaProductoraServlet</servlet-name>
+    <servlet-class>servlets.FamiliaProductoraServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>FamiliaProductoraServlet</servlet-name>
+    <url-pattern>/FamiliaProductoraServlet</url-pattern>
+  </servlet-mapping>  
+
+  <servlet>
+    <description></description>
+    <display-name>CargarBD</display-name>
+    <servlet-name>CargarBD</servlet-name>
+    <servlet-class>api.CargarBD</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>CargarBD</servlet-name>
+    <url-pattern>/CargarBD</url-pattern>
+  </servlet-mapping -->
+
+</web-app>

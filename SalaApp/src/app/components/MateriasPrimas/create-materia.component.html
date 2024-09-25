@@ -1,0 +1,52 @@
+
+<div class="container mt-3">
+    <h2>Crear Materia Prima</h2>
+    <form (ngSubmit)="createMateria(editForm)" #editForm="ngForm" class="card">
+      <div class="card-body">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" id="nombre" [(ngModel)]="materia.nombre" name="nombre" required class="form-control">
+          </div>
+          <label for="fechaCompra" class="form-label">Fecha de compra:</label>
+          <input type="date" id="fechaCompra" [(ngModel)]="materia.fechaCompra" name="fechaCompra" required class="form-control" >
+          <label for="fechaVencimiento" class="form-label">Fecha de vencimiento:</label>
+          <input type="date" id="fechaVencimiento" [(ngModel)]="materia.fechaVencimiento" name="fechaVencimiento" required class="form-control" >
+          <label for="costoPorKg" class="form-label">Costo por kg:</label>
+          <input type="number" id="costoPorKg" [(ngModel)]="materia.costoPorKg" name="costoPorKg" required class="form-control" >
+          <label for="formaAlmacenamiento" class="form-label">Forma de almacenamiento:</label>
+          <input type="text" id="formaAlmacenamiento" [(ngModel)]="materia.formaAlmacenamiento" name="formaAlmacenamiento" required class="form-control" >
+          <label for="peso" class="form-label">Peso:</label>
+          <input type="number" id="peso" [(ngModel)]="materia.peso" name="peso" required class="form-control" >
+          <div class="mb-3">
+            <label for="productor" class="form-label">Productor:</label>
+            <select id="productor" [(ngModel)]="materia.nombreProductor" name="productor" required class="form-control">
+              <option *ngFor="let productor of familias" [ngValue]="productor.nombre">{{ productor.nombre }}</option>
+          </select>
+          
+        </div>
+        </div>
+        <div>        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      </div>
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+        <p>{{ errorMessage }}</p>
+      </div>
+    
+      <div *ngIf="successMessage" class="alert alert-success mt-3">
+        <p>{{ successMessage }}</p>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

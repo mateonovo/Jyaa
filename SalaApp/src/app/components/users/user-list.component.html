@@ -1,0 +1,25 @@
+<div *ngIf="errorMessage" class="alert alert-danger">
+  {{ errorMessage }}
+</div>
+
+<div class="container mt-3">
+  <div class="d-flex justify-content-between align-items-center">
+    <a class="btn btn-primary mb-2" routerLink="/register">Registrar Nuevo Usuario</a>
+  </div>
+
+  <ul *ngIf="users.length" class="list-group">
+    <li *ngFor="let user of users" class="list-group-item d-flex justify-content-between align-items-center">
+      <span>{{ user.nombre }} {{ user.apellido }}</span>
+      <div>
+        <a class="btn btn-info btn-sm me-1" routerLink="/user/{{ user.id }}">Ver Detalles</a>
+        <a class="btn btn-warning btn-sm me-1" routerLink="/edit-user/{{ user.id }}">Editar</a>
+        <a class="btn btn-danger btn-sm" routerLink="/delete-user/{{ user.id }}">Eliminar</a>
+      </div>
+    </li>
+  </ul>
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+</div>
+
+

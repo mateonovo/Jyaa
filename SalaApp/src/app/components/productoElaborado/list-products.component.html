@@ -1,0 +1,34 @@
+<div class="btn-group" role="group" aria-label="Filtro de productos">
+  <button class="btn btn-outline-primary" [ngClass]="{'active': filterOption === 'active'}" (click)="toggleFilter('active')"> Mostrar Activos</button>
+  <button class="btn btn-outline-primary" [ngClass]="{'active': filterOption === 'inactive'}" (click)="toggleFilter('inactive')"> Mostrar No Activos </button>
+  <button class="btn btn-outline-primary" [ngClass]="{'active': filterOption === 'all'}"  (click)="toggleFilter('all')"> Mostrar Todos</button>
+</div>
+
+<div *ngIf="filteredProductos.length > 0">
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Fecha de Envasado</th>
+          <th>Fecha de Vencimiento</th>
+          <th>Detalles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of filteredProductos">
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.fechaEnvasado | date }}</td>
+          <td>{{ producto.fechaVencimiento | date }}</td>
+          <td><a class="btn btn-info btn-sm" routerLink="/producto/{{ producto.id }}">Ver Producto</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div *ngIf="!filteredProductos.length" class="alert alert-warning mt-3">
+  No se encontraron productos.
+</div>
+<div *ngIf="successMessage" class="alert alert-success mt-3">
+  {{ successMessage }}
+</div>
